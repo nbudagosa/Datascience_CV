@@ -14,3 +14,18 @@ WHERE country = 'USA' OR country = 'Canada';
 SELECT * FROM customers 
 WHERE NOT (country = 'USA' OR country = 'Canada');
 
+-- IN operator
+SELECT * FROM customers
+WHERE country IN ('USA', 'Canada', 'Belgium');
+
+-- IN operator
+SELECT * FROM customers
+WHERE country NOT IN ('USA', 'Canada', 'Belgium');
+
+-- BETWEEN AND
+SELECT * FROM customers
+WHERE customerID BETWEEN 5 AND 10; -- inclusive
+
+SELECT * FROM customers 
+WHERE customerID >= 5 AND customerID <= 10;
+
