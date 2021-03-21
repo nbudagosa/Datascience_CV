@@ -14,13 +14,19 @@ WHERE country = 'USA' OR country = 'Canada';
 SELECT * FROM customers 
 WHERE NOT (country = 'USA' OR country = 'Canada');
 
+
+
 -- IN operator
 SELECT * FROM customers
 WHERE country IN ('USA', 'Canada', 'Belgium');
 
+
+
 -- IN operator
 SELECT * FROM customers
 WHERE country NOT IN ('USA', 'Canada', 'Belgium');
+
+
 
 -- BETWEEN AND
 SELECT * FROM customers
@@ -29,9 +35,13 @@ WHERE customerID BETWEEN 5 AND 10; -- inclusive
 SELECT * FROM customers 
 WHERE customerID >= 5 AND customerID <= 10;
 
+
+
 -- BETWEEN AND with DATE TIME column
 SELECT * FROM invoices
 WHERE invoicedate BETWEEN '2009-01-01 00:00:00' AND '2009-01-31 20:00:00';
+
+
 
 
 -- NULL
@@ -41,6 +51,8 @@ WHERE company IS NULL;
 SELECT * FROM customers
 WHERE company IS NOT NULL;
 
+
+
 -- Pattern Machting
 SELECT * FROm customers
 WHERE email LIKE '%@gmail.com'
@@ -48,19 +60,27 @@ WHERE email LIKE '%@gmail.com'
 SELECT * FROm customers
 WHERE email NOT LIKE '%@gmail.com'
 
--- Find customers with phone number include 99
+
+
+--Find customers with phone number include 99
 SELECT * FROM customers
 WHERE phone LIKE '%99%';
+
+
 
 -- Find customers firstname like 'John' etc.
 SELECT * FROM customers
 WHERE firstname LIKE 'J_hn';
+
+
 
 -- replace NULL with desired values
 SELECT 
   company,
   COALESCE(company, 'End Customer') AS cleanCompany
 FROM customers;
+
+
 
 -- replace NULL with desired values
 SELECT 
@@ -70,6 +90,8 @@ SELECT
   END AS segment
 FROM customers;
 
+
+
 -- join table with WHERE clause, two tables
 SELECT
 	artists.artistid,
@@ -78,6 +100,8 @@ SELECT
 FROM artists, albums, tracks  
 WHERE artists.artistid = albums.artistid -- PK = FK
   AND artists.artistid IN (8, 100, 120);
+
+
 
 -- join table with WHERE clause, three tables
 SELECT
@@ -89,6 +113,8 @@ FROM artists, albums, tracks
 WHERE artists.artistid = albums.artistid -- PK = FK
   AND albums.albumid = tracks.albumid
   AND artists.artistid IN (8, 100, 120);
+
+
 
 -- Aggregate Functions 
 SELECT
@@ -108,6 +134,8 @@ FROM genres, tracks
 WHERE genres.genreid = tracks.genreid
 GROUP BY genres.name;
 
+
+
 -- Filter groups
 SELECT 
 	  genres.name, 
@@ -116,6 +144,8 @@ FROM genres, tracks
 WHERE genres.genreid = tracks.genreid AND genres.name <> 'Rock'
 GROUP BY genres.name
 HAVING COUNT(*) >= 100 ;
+
+
 
 -- Order By + Limit 
 SELECT 
