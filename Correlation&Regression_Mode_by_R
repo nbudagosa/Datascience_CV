@@ -1,3 +1,13 @@
+# correlation analysis
+cor(mtcars$hp, mtcars$mpg)
+plot(mtcars$hp, mtcars$mpg)
+
+# linear regression
+model <- lm(mpg ~ hp, data = mtcars)
+summary(model)
+
+
+
 
 # TRAIN-TEST-SPLIT model training method
 # split data
